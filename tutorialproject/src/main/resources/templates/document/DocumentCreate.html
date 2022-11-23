@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating documents</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/document-create}" th:object="${document}" method="post">
+    <input type="text" th:field="*{passport_number}" id="passport_number" placeholder="Passport number"/>
+    <input type="text" th:field="*{passport_series}" id="passport_series" placeholder="Passport series"/>
+    <input type="date" th:field="*{birth_date}" id="birth_date" placeholder="Date of birth"/>
+    <input type="text" th:field="*{address}" id="address" placeholder="Address"/>
+    <input type="submit" value="Create document">
+</form>
+
+</body>
+</html>

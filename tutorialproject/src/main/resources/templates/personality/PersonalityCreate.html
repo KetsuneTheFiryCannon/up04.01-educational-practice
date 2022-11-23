@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating personal data</title>
+
+    <link rel="stylesheet" href="/PhoneValidation.css">
+</head>
+<body>
+<link rel="stylesheet">
+
+<form action="#" th:action="@{/personality-create}" th:object="${personality}" method="post">
+    <input type="text" th:field="*{first_name}" id="first_name" placeholder="First name"/>
+    <input type="text" th:field="*{second_name}" id="second_name" placeholder="Second name"/>
+    <input type="text" th:field="*{third_name}" id="third_name" placeholder="Third name"/>
+    <input type="email" th:field="*{mail}" id="mail" placeholder="Email"/>
+    <div>
+        <label for="phone_number">Enter a telephone number (in the form xxx-xxx-xxxx): </label>
+        <input type="tel"
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+               required
+               th:field="*{phone_number}"
+               id="phone_number"/>
+        <span class="validity"></span>
+    </div>
+    <label for="status">Data status</label>
+    <input type="checkbox" th:field="*{status}" id="status"/>
+    <input type="submit" value="Create document">
+</form>
+</body>
+</html>
