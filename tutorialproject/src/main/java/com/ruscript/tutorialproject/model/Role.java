@@ -8,10 +8,14 @@ public class Role {
     @Id
     @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column(name = "role_name")
-    public String name;
+    private String name;
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

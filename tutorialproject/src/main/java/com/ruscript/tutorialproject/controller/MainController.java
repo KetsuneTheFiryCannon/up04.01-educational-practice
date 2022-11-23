@@ -1,13 +1,10 @@
 package com.ruscript.tutorialproject.controller;
 
-import com.ruscript.tutorialproject.repository.ClientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import static org.apache.coyote.http11.Constants.a;
 
 @Controller
 public class MainController {

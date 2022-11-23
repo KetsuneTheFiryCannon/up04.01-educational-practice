@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update role</title>
 </head>
 <body>
-
+<form method="post">
+    <label>Role name</label>
+    <input type="text" th:value="${role.name}" name="name" placeholder="Role name">
+    <input type="submit" value="Update role">
+</form>
 </body>
 </html>
