@@ -22,7 +22,9 @@ public class RoleService {
         return roleRepository.findById(id).orElse(null);
     }
 
-    public List<Role> findByNameContainsIgnoreCase (String s) { return  roleRepository.findByNameContainsIgnoreCase(s); }
+    public List<Role> findByName(String name){
+        return roleRepository.findByName(name);
+    }
 
     public List<Role> findAll(){
         return roleRepository.findAll();
