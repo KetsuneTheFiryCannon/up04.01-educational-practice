@@ -1,37 +1,36 @@
 package com.ruscript.tutorialproject.controller;
 
 import com.ruscript.tutorialproject.model.Document;
-import com.ruscript.tutorialproject.model.Personality;
 import com.ruscript.tutorialproject.model.Role;
 import com.ruscript.tutorialproject.repository.DocumentRepository;
+import com.ruscript.tutorialproject.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.print.Doc;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Locale;
 
 @Controller
 public class DocumentController {
 
-    private final DocumentRepository documentRepository;
+    @Autowired
+    private final DocumentService documentService;
 
-    public DocumentController(DocumentRepository documentRepository) {
-        this.documentRepository = documentRepository;
+    public DocumentController(DocumentService documentService) {
+        this.documentService = documentService;
     }
 
     @GetMapping("/documents-all")
     public String findAll(Model model) {
-        List<Document> docs = documentRepository.findAll();
+        List<Document> docs = documentService.findAll();
         model.addAttribute("docs", docs);
         return "document/AllDocumentsView";
     }
@@ -42,9 +41,40 @@ public class DocumentController {
     }
 
     @PostMapping("/document-create")
-    public String createDocumentPost(@Validated Document document, BindingResult bindingResult) {
+    public String createDocumentPost(@Valid Document document, BindingResult bindingResult) {
 
-        documentRepository.save(document);
+        bindingResult.addError(new ObjectError("defaultMessage", "Wrong input"));
+
+        if(bindingResult.hasErrors()){
+            return "document/DocumentCreate";
+        }
+        documentService.save(document);
+        return "redirect:/documents-all";
+    }
+
+    @GetMapping("/document-delete/{id}")
+    public String deleteById(@PathVariable int id){
+        documentService.deleteById(id);
+        return "redirect:/documents-all";
+    }
+
+    @GetMapping("/document-update/{id}")
+    public String up(
+            @PathVariable int id,
+            Document document,
+            Model model
+            ){
+        document = documentService.findById(id);
+        model.addAttribute("document", document);
+        return "document/DocumentUpdate";
+    }
+
+    @PostMapping("/document-update/{id}")
+    public String updateString(
+            Document document
+    ){
+        documentService.save(document);
+
         return "redirect:/documents-all";
     }
 }

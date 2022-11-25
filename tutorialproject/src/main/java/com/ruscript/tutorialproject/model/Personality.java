@@ -12,52 +12,57 @@ public class Personality {
     private int id;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstname;
 
     @Column(name = "second_name")
-    private String second_name;
+    private String secondname;
 
     @Column(name = "third_name")
-    private String third_name;
+    private String thirdname;
 
     @Column(name = "mail")
     private String mail;
 
     @Column(name = "phone_number")
-    private String phone_number;
+    private String phonenumber;
 
     @Column(name = "status")
     private boolean status;
 
+
     public Personality() {
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getSecond_name() {
-        return second_name;
+    public String getSecondname() {
+        return secondname;
     }
 
-    public void setSecond_name(String second_name) {
-        this.second_name = second_name;
+    public void setSecondname(String secondname) {
+        this.secondname = secondname;
     }
 
-    public String getThird_name() {
-        return third_name;
+    public String getThirdname() {
+        return thirdname;
     }
 
-    public void setThird_name(String third_name) {
-        this.third_name = third_name;
+    public void setThirdname(String thirdname) {
+        this.thirdname = thirdname;
     }
 
     public String getMail() {
@@ -68,12 +73,12 @@ public class Personality {
         this.mail = mail;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public boolean isStatus() {

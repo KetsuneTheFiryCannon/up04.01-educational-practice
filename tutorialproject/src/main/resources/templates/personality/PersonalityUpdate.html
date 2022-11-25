@@ -9,7 +9,7 @@
 <body>
 <link rel="stylesheet">
 
-<form action="#" th:action="@{/personality-create}" th:object="${personality}" method="post">
+<form th:object="${personality}" method="post">
     <input type="text" th:field="*{firstname}" id="first_name" placeholder="First name"/>
     <input type="text" th:field="*{secondname}" id="second_name" placeholder="Second name"/>
     <input type="text" th:field="*{thirdname}" id="third_name" placeholder="Third name"/>
@@ -25,7 +25,7 @@
     </div>
     <label for="status">Data status</label>
     <input type="checkbox" th:field="*{status}" id="status"/>
-    <input type="submit" value="Create personality">
+    <input type="submit" value="Update personality">
 </form>
 </body>
 </html>

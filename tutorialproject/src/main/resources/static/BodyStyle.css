@@ -1,0 +1,19 @@
+.carousel-size{
+    width: 25%;
+    height: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.element-spacer {
+    padding: 4rem;
+    margin-bottom: 4rem;
+}
+
+.body-color, .sample-section-wrap{
+    background: rgba(183,181,209,150);
+}
+
+.menu-color{
+    background: rgba(108, 105, 135, 1);
+}

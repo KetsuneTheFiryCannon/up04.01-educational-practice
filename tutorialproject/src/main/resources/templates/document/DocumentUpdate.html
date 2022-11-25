@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Updating documents</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="doc" type="com.ruscript.tutorialproject.model.Document"*/-->
+<form th:object="${document}" method="post" th:action="'/document-update/'+${document.getId()}">
+<!--    <input type="hidden" th:field="*{id}" th:value="${document.getId()}" >-->
+
+    <input type="text" th:field="*{passportnumber}" id="passportnumber" placeholder="Passport number"/>
+    <div th:if="${#fields.hasErrors('passportnumber')}"  th:errors="*{passportnumber}" style="color: red"></div>
+
+    <input type="text" th:field="*{passportseries}" th:value="*{passportseries}" id="passportseries" placeholder="Passport series"/>
+
+    <input type="date" th:field="*{birthdate}" id="birthdate" placeholder="Date of birth"/>
+
+    <input type="text" th:field="*{address}" id="address" placeholder="Address"/>
+
+    <input type="submit" value="Update document">
+</form>
+</body>
+</html>

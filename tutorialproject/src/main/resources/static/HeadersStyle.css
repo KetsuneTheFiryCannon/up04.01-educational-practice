@@ -60,7 +60,11 @@ h2 {
 .sample-section {
     position: relative;
     max-width: 640px;
-    margin-left: auto;
+    margin-left: 15px;
     margin-right: auto;
-    padding: 40px;
+    padding: 15px;
+}
+
+.button-text-color{
+    color: rgba(168, 165, 193, 1);
 }
