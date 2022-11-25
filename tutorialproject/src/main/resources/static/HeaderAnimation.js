@@ -12,3 +12,45 @@ $(window).scroll(function() {
 $(window).resize(function() {
     parallax_height();
 });
+
+var home_btn = document.getElementById("home-btn");
+
+home_btn.addEventListener("mouseenter", (event) => {
+    home_btn.classList.remove('bi-door-closed-fill');
+    home_btn.classList.add('bi-door-open-fill');
+    home_btn.
+})
+
+
+home_btn.addEventListener("mouseleave", (event) => {
+    home_btn.classList.remove('bi-door-open-fill');
+    home_btn.classList.add('bi-door-closed-fill');
+})
+
+var home_btn = document.getElementById("home-btn");
+
+home_btn.addEventListener("mouseenter", (event) => {
+    home_btn.classList.remove('bi-door-closed-fill');
+    home_btn.classList.add('bi-door-open-fill');
+    home_btn.
+})
+
+
+home_btn.addEventListener("mouseleave", (event) => {
+    home_btn.classList.remove('bi-door-open-fill');
+    home_btn.classList.add('bi-door-closed-fill');
+})
+
+var home_btn = document.getElementById("home-btn");
+
+home_btn.addEventListener("mouseenter", (event) => {
+    home_btn.classList.remove('bi-door-closed-fill');
+    home_btn.classList.add('bi-door-open-fill');
+    home_btn.
+})
+
+
+home_btn.addEventListener("mouseleave", (event) => {
+    home_btn.classList.remove('bi-door-open-fill');
+    home_btn.classList.add('bi-door-closed-fill');
+})

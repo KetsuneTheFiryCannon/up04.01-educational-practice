@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.print.Doc;
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -42,8 +44,13 @@ public class DocumentController {
     }
 
     @PostMapping("/document-create")
-    public String createDocumentPost(@Validated Document document, BindingResult bindingResult) {
+    public String createDocumentPost(@Valid Document document, BindingResult bindingResult) {
 
+        bindingResult.addError(new ObjectError("defaultMessage", "Wrong input"));
+
+        if(bindingResult.hasErrors()){
+            return "document/DocumentCreate";
+        }
         documentRepository.save(document);
         return "redirect:/documents-all";
     }

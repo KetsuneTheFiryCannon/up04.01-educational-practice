@@ -8,11 +8,18 @@
 
 <form action="#" th:action="@{/document-create}" th:object="${document}" method="post">
     <input type="text" th:field="*{passport_number}" id="passport_number" placeholder="Passport number"/>
+    <div th:if="${#fields.hasErrors('passport_number')}"  th:errors="*{passport_number}" style="color: red"></div>
+
     <input type="text" th:field="*{passport_series}" id="passport_series" placeholder="Passport series"/>
+    <div th:if="${#fields.hasErrors('passport_series')}"  th:errors="*{passport_series}" style="color: red"></div>
+
     <input type="date" th:field="*{birth_date}" id="birth_date" placeholder="Date of birth"/>
+    <div th:if="${#fields.hasErrors('passport_number')}"  th:errors="*{passport_number}" style="color: red"></div>
+
     <input type="text" th:field="*{address}" id="address" placeholder="Address"/>
+    <div th:if="${#fields.hasErrors('passport_number')}"  th:errors="*{passport_number}" style="color: red"></div>
+
     <input type="submit" value="Create document">
 </form>
-
 </body>
 </html>

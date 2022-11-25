@@ -1,23 +1,31 @@
 <div th:fragment="headerMain">
+
     <div class="sample-header">
         <div class="sample-header-section">
-            <h1 class="text-center">Searching for mysteries?</h1>
-            <h2 class="text-center text-font-cursive">You're welcome if you dare...</h2>
         </div>
     </div>
-    <div class="sample-section-wrap">
+    <div class="sample-section-wrap menu-color">
         <div class="sample-section">
-            <tr>
-                <th>
-                    <a href="/roles-all" type="button" class="btn btn-success">Roles</a>
-                </th>
-                <th>
-                    <a href="/documents-all" type="button" class="btn btn-success">Documents</a>
-                </th>
-                <th>
-                    <a href="/personalities-all" type="button" class="btn btn-success">Personalities</a>
-                </th>
-            </tr>
+            <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav button-text-color">
+                <li>
+                    <a href="/home" class="nav-link py-2 px-0 px-lg-2 active">
+                        <div id="map_outer">
+                            <svg id="home-btn" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                                <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            </svg>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/roles-all" type="button" class="nav-link py-2 px-0 px-lg-2 active">Roles</a>
+                </li>
+                <li>
+                    <a href="/documents-all" type="button" class="nav-link py-2 px-0 px-lg-2 active">Documents</a>
+                </li>
+                <li>
+                    <a href="/personalities-all" type="button" class="nav-link py-2 px-0 px-lg-2 active">Personalities</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
