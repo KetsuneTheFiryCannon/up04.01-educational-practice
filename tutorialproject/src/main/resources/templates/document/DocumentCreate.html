@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/document-create}" th:object="${document}" method="post">
+<form th:action="@{/document-create}" th:object="${document}" method="post">
     <input type="text" th:field="*{passportnumber}" id="passportnumber" placeholder="Passport number"/>
     <div th:if="${#fields.hasErrors('passportnumber')}"  th:errors="*{passportnumber}" style="color: red"></div>
 
@@ -14,10 +14,10 @@
     <div th:if="${#fields.hasErrors('passportseries')}"  th:errors="*{passportseries}" style="color: red"></div>
 
     <input type="date" th:field="*{birthdate}" id="birthdate" placeholder="Date of birth"/>
-    <div th:if="${#fields.hasErrors('passportnumber')}"  th:errors="*{passportnumber}" style="color: red"></div>
+    <div th:if="${#fields.hasErrors('birthdate')}"  th:errors="*{birthdate}" style="color: red"></div>
 
     <input type="text" th:field="*{address}" id="address" placeholder="Address"/>
-    <div th:if="${#fields.hasErrors('passportnumber')}"  th:errors="*{passportnumber}" style="color: red"></div>
+    <div th:if="${#fields.hasErrors('address')}"  th:errors="*{address}" style="color: red"></div>
 
     <input type="submit" value="Create document">
 </form>

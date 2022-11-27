@@ -1,6 +1,7 @@
 package com.ruscript.tutorialproject.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 
@@ -12,16 +13,22 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @Size(min = 6, max = 6, message = "Wrong format")
+    @NotEmpty(message = "Must be filled")
+    @Size(min = 6, max = 6, message = "Wrong format")
     @Column(name = "passport_number")
     public String passportnumber;
 
+    @NotEmpty(message = "Must be filled")
+    @Size(min = 4, max = 4, message = "Wrong format")
     @Column(name = "passport_seria")
     public String passportseries;
 
+    //@NotEmpty(message = "Must be filled")
     @Column(name = "birth_date")
     public Date birthdate;
 
+
+    @NotEmpty(message = "Must be filled")
     @Column(name = "address")
     public String address;
 
