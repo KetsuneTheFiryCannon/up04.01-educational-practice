@@ -43,7 +43,7 @@ public class DocumentController {
     @PostMapping("/document-create")
     public String createDocumentPost(@Valid Document document, BindingResult bindingResult) {
 
-        bindingResult.addError(new ObjectError("defaultMessage", "Wrong input"));
+//        bindingResult.addError(new ObjectError("defaultMessage", "Wrong input"));
 
         if(bindingResult.hasErrors()){
             return "document/DocumentCreate";

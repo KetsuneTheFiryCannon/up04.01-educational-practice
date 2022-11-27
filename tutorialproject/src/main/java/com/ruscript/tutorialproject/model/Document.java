@@ -12,7 +12,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(min = 6, max = 6, message = "Wrong format")
+//    @Size(min = 6, max = 6, message = "Wrong format")
     @Column(name = "passport_number")
     public String passportnumber;
 
