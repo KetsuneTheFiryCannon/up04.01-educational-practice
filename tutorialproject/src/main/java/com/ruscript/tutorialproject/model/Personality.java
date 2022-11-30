@@ -1,6 +1,7 @@
 package com.ruscript.tutorialproject.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
@@ -29,6 +30,8 @@ public class Personality {
     @Column(name = "status")
     private boolean status;
 
+    @OneToOne(optional = true, mappedBy = "personaldatafk")
+    private User user;
 
     public Personality() {
     }
@@ -87,5 +90,13 @@ public class Personality {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,8 +10,16 @@
     margin-bottom: 4rem;
 }
 
+.element-align-center{
+    vertical-align: middle
+}
+
 .body-color, .sample-section-wrap{
     background: rgba(183,181,209,150);
+}
+
+.body-color-light{
+    background: #CBB5D1;
 }
 
 .menu-color{

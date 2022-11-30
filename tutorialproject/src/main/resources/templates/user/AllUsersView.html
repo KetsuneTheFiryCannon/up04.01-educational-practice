@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="el : ${user_list}">
+        <p th:if="${el.userId}" th:text="${el.userId}"></p>
+        <p th:if="${el.userlogin}" th:text="${el.userlogin}" ></p>
+
+    <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().passportnumber}"></p>
+    <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().passportseries}"></p>
+    <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().birthdate}"></p>
+    <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().address}"></p>
+
+    <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().firstname}"></p>
+    <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().secondname}"></p>
+    <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().thirdname}"></p>
+    <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().mail}"></p>
+    <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().phonenumber}"></p>
+
+</div>
+
+</body>
+</html>

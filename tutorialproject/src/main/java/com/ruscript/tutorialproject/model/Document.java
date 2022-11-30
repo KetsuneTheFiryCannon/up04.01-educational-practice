@@ -23,14 +23,15 @@ public class Document {
     @Column(name = "passport_seria")
     public String passportseries;
 
-    //@NotEmpty(message = "Must be filled")
     @Column(name = "birth_date")
     public Date birthdate;
-
 
     @NotEmpty(message = "Must be filled")
     @Column(name = "address")
     public String address;
+
+    @OneToOne(optional = true, mappedBy = "documentfk")
+    public User user;
 
     public Document() {
     }
@@ -74,4 +75,8 @@ public class Document {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 }

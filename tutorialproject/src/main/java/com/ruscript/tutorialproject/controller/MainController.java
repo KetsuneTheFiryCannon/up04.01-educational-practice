@@ -13,6 +13,12 @@ public class MainController {
         return "HomeView";
     }
 
+
+    @GetMapping("/privacy-policy")
+    public String PrivacyPolicy() {
+        return "PrivacyPolicyView";
+    }
+
     @GetMapping("/info")
     public String Info() {
         return "InfoView";

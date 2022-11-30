@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:src="POST" th:action="@{/advertisement-create}" th:object="@{advertisement}" enctype="multipart/form-data">
+<!--    <img th:src="'/img/'+ ${advertisment.}">-->
+    <input type="text" th:field="*{advertisementname}" id="advertisementname" />
+    <input type="number" th:field="*{advertisementprice}" id="advertisementprice" />
+    <input type="text" th:field="*{advertisementtext}" id="advertisementtext" />
+    <input type="file" name="file" id="file" />
+    <input type="submit" value="add">
+</form>
+</body>
+</html>

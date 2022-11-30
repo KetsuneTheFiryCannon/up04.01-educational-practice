@@ -7,6 +7,18 @@
     color:#737373;
     margin-top: 25px;
 }
+
+.img-size-git{
+    height: 45px;
+    width: 45px;
+}
+
+
+.img-size-vk{
+    height: 30px;
+    width: 30px;
+}
+
 .site-footer hr
 {
     border-top-color:#bbb;
