@@ -9,38 +9,38 @@ public class Bank {
     @Id
     @Column(name = "bank_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int BankId;
+    public int bankid;
 
     @Column(name = "bank_name")
-    public String BankName;
+    public String nankname;
 
     @Column(name = "personal_data_fk")
-    public int PersonalDataFk;
+    public int personaldatafk;
 
     public Bank() {
     }
 
-    public int getBankId() {
-        return BankId;
+    public int getBankid() {
+        return bankid;
     }
 
-    public void setBankId(int bankId) {
-        BankId = bankId;
+    public void setBankid(int bankid) {
+        this.bankid = bankid;
     }
 
-    public String getBankName() {
-        return BankName;
+    public String getNankname() {
+        return nankname;
     }
 
-    public void setBankName(String bankName) {
-        BankName = bankName;
+    public void setNankname(String nankname) {
+        this.nankname = nankname;
     }
 
-    public int getPersonalDataFk() {
-        return PersonalDataFk;
+    public int getPersonaldatafk() {
+        return personaldatafk;
     }
 
-    public void setPersonalDataFk(int personalDataFk) {
-        PersonalDataFk = personalDataFk;
+    public void setPersonaldatafk(int personaldatafk) {
+        this.personaldatafk = personaldatafk;
     }
 }

@@ -1,26 +1,26 @@
 package com.ruscript.tutorialproject.model;
 
 public class ContractType {
-    public int ContractTypeId;
+    public int contracttypeid;
 
-    public String ContractType;
+    public String contracttype;
 
     public ContractType() {
     }
 
-    public int getContractTypeId() {
-        return ContractTypeId;
+    public int getContracttypeid() {
+        return contracttypeid;
     }
 
-    public void setContractTypeId(int contractTypeId) {
-        ContractTypeId = contractTypeId;
+    public void setContracttypeid(int contracttypeid) {
+        this.contracttypeid = contracttypeid;
     }
 
-    public String getContractType() {
-        return ContractType;
+    public String getContracttype() {
+        return contracttype;
     }
 
-    public void setContractType(String contractType) {
-        ContractType = contractType;
+    public void setContracttype(String contracttype) {
+        this.contracttype = contracttype;
     }
 }

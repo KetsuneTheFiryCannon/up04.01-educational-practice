@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:obj enctype="multipart/form-data">
+    <input type="text" th:field="*{advertisementname}" id="advertisementname" />
+    <input type="number" th:field="*{advertisementprice}" id="advertisementprice" />
+    <input type="text" th:field="*{advertisementtext}" id="advertisementtext" />
+    <input type="file" name="file" id="file" />
+    <input type="submit" value="add">
+</form>
+<form method="get" action="/advertisement-create">
+
+</form>
+</body>
+</html>

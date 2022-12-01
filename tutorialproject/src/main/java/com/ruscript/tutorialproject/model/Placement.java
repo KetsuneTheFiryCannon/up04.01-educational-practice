@@ -1,56 +1,56 @@
 package com.ruscript.tutorialproject.model;
 
 public class Placement {
-    public int PlacementId;
+    public int placementid;
 
-    public String PlacementName;
+    public String placementname;
 
-    public double PlacementCost;
+    public double placementcost;
 
-    public boolean PlacementStatus;
+    public boolean placementstatus;
 
-    public int RoomFk;
+    public int roomfk;
 
     public Placement() {
     }
 
-    public int getPlacementId() {
-        return PlacementId;
+    public int getPlacementid() {
+        return placementid;
     }
 
-    public void setPlacementId(int placementId) {
-        PlacementId = placementId;
+    public void setPlacementid(int placementid) {
+        this.placementid = placementid;
     }
 
-    public String getPlacementName() {
-        return PlacementName;
+    public String getPlacementname() {
+        return placementname;
     }
 
-    public void setPlacementName(String placementName) {
-        PlacementName = placementName;
+    public void setPlacementname(String placementname) {
+        this.placementname = placementname;
     }
 
-    public double getPlacementCost() {
-        return PlacementCost;
+    public double getPlacementcost() {
+        return placementcost;
     }
 
-    public void setPlacementCost(double placementCost) {
-        PlacementCost = placementCost;
+    public void setPlacementcost(double placementcost) {
+        this.placementcost = placementcost;
     }
 
-    public boolean isPlacementStatus() {
-        return PlacementStatus;
+    public boolean isPlacementstatus() {
+        return placementstatus;
     }
 
-    public void setPlacementStatus(boolean placementStatus) {
-        PlacementStatus = placementStatus;
+    public void setPlacementstatus(boolean placementstatus) {
+        this.placementstatus = placementstatus;
     }
 
-    public int getRoomFk() {
-        return RoomFk;
+    public int getRoomfk() {
+        return roomfk;
     }
 
-    public void setRoomFk(int roomFk) {
-        RoomFk = roomFk;
+    public void setRoomfk(int roomfk) {
+        this.roomfk = roomfk;
     }
 }

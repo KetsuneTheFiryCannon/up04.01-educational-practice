@@ -1,6 +1,8 @@
 package com.ruscript.tutorialproject.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -12,6 +14,17 @@ public class MVCConfig implements WebMvcConfigurer {
         //registry.addViewController("/").setViewName("home");
         //registry.addViewController("/hello").setViewName("hello");
         registry.addViewController("/login").setViewName("/Authentication/login");
+    }
+
+
+
+    @Value("${upload.path}")
+    private String uploadPath;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry.addResourceHandler("/img/**")
+                .addResourceLocations("file://"+uploadPath+"/");
     }
 
 }

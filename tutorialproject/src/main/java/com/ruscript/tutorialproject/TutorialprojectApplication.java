@@ -15,9 +15,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-public class TutorialprojectApplication implements WebMvcConfigurer {
+public class TutorialprojectApplication extends WebSecurityConfigurerAdapter {
 
 
     final UserService userService;
@@ -53,6 +54,11 @@ public class TutorialprojectApplication implements WebMvcConfigurer {
     }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
@@ -76,20 +82,6 @@ public class TutorialprojectApplication implements WebMvcConfigurer {
                 .disable()
                 .cors()
                 .disable();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
-    }
-
-    @Value("${upload.path}")
-    private String uploadPath;
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry){
-        registry.addResourceHandler("/img/**")
-                .addResourceLocations("file://"+uploadPath+"/");
     }
 
 }

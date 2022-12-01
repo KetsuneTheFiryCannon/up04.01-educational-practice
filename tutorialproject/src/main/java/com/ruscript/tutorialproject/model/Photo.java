@@ -11,17 +11,25 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int photoid;
 
-    @Id
     @Column(name = "photo_path")
     public String photopath;
 
     @ManyToMany
-    @JoinTable (name="advertisment_photo_table",
-            joinColumns=@JoinColumn (name="advertisment_fk"),
-            inverseJoinColumns=@JoinColumn(name="photo_fk"))
-    private List<Advertisement> universities;
+    @JoinTable (name="advertisement_photo_like",
+            joinColumns=@JoinColumn (name="photo_fk"),
+            inverseJoinColumns=@JoinColumn(name="advertisement_fk"))
+
+    private List<Advertisement> advertisements;
 
     public Photo() {
+    }
+
+    public List<Advertisement> getAdvertisements() {
+        return advertisements;
+    }
+
+    public void setAdvertisements(List<Advertisement> advertisements) {
+        this.advertisements = advertisements;
     }
 
     public int getPhotoid() {

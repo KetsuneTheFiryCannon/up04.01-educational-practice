@@ -4,46 +4,46 @@ import java.sql.Date;
 import java.util.UUID;
 
 public class Holiday {
-    public int HolidayId;
+    public int holidayid;
 
-    public Date HolidayStart;
+    public Date holidaystart;
 
-    public Date HolidayEnd;
+    public Date holidayend;
 
-    public UUID UserFk;
+    public UUID userfk;
 
     public Holiday() {
     }
 
-    public int getHolidayId() {
-        return HolidayId;
+    public int getHolidayid() {
+        return holidayid;
     }
 
-    public void setHolidayId(int holidayId) {
-        HolidayId = holidayId;
+    public void setHolidayid(int holidayid) {
+        this.holidayid = holidayid;
     }
 
-    public Date getHolidayStart() {
-        return HolidayStart;
+    public Date getHolidaystart() {
+        return holidaystart;
     }
 
-    public void setHolidayStart(Date holidayStart) {
-        HolidayStart = holidayStart;
+    public void setHolidaystart(Date holidaystart) {
+        this.holidaystart = holidaystart;
     }
 
-    public Date getHolidayEnd() {
-        return HolidayEnd;
+    public Date getHolidayend() {
+        return holidayend;
     }
 
-    public void setHolidayEnd(Date holidayEnd) {
-        HolidayEnd = holidayEnd;
+    public void setHolidayend(Date holidayend) {
+        this.holidayend = holidayend;
     }
 
-    public UUID getUserFk() {
-        return UserFk;
+    public UUID getUserfk() {
+        return userfk;
     }
 
-    public void setUserFk(UUID userFk) {
-        UserFk = userFk;
+    public void setUserfk(UUID userfk) {
+        this.userfk = userfk;
     }
 }

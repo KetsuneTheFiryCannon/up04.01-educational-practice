@@ -3,36 +3,36 @@ package com.ruscript.tutorialproject.model;
 import java.util.UUID;
 
 public class Log {
-    public int LogId;
+    public int logid;
 
-    public String LogActivity;
+    public String logactivity;
 
-    public UUID UserFk;
+    public UUID userfk;
 
     public Log() {
     }
 
-    public int getLogId() {
-        return LogId;
+    public int getLogid() {
+        return logid;
     }
 
-    public void setLogId(int logId) {
-        LogId = logId;
+    public void setLogid(int logid) {
+        this.logid = logid;
     }
 
-    public String getLogActivity() {
-        return LogActivity;
+    public String getLogactivity() {
+        return logactivity;
     }
 
-    public void setLogActivity(String logActivity) {
-        LogActivity = logActivity;
+    public void setLogactivity(String logactivity) {
+        this.logactivity = logactivity;
     }
 
-    public UUID getUserFk() {
-        return UserFk;
+    public UUID getUserfk() {
+        return userfk;
     }
 
-    public void setUserFk(UUID userFk) {
-        UserFk = userFk;
+    public void setUserfk(UUID userfk) {
+        this.userfk = userfk;
     }
 }

@@ -31,12 +31,20 @@ public class Advertisement {
     public UUID userFk;
 
     @ManyToMany
-    @JoinTable(name = "advertisment_photo_table",
-    joinColumns = @JoinColumn(name = "advertisment_fk"),
-    inverseJoinColumns = @JoinColumn(name = "photo_fk"))
+    @JoinTable(name="advertisement_photo_like",
+            joinColumns=@JoinColumn(name="advertisement_fk"),
+            inverseJoinColumns=@JoinColumn(name="photo_fk"))
     public List<Photo> photos;
 
     public Advertisement() {
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 
     public int getAdvertisementid() {

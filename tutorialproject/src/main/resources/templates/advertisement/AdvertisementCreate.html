@@ -1,17 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Добавление нового студента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<form th:src="POST" th:action="@{/advertisement-create}" th:object="@{advertisement}" enctype="multipart/form-data">
-<!--    <img th:src="'/img/'+ ${advertisment.}">-->
-    <input type="text" th:field="*{advertisementname}" id="advertisementname" />
-    <input type="number" th:field="*{advertisementprice}" id="advertisementprice" />
-    <input type="text" th:field="*{advertisementtext}" id="advertisementtext" />
-    <input type="file" name="file" id="file" />
-    <input type="submit" value="add">
+
+
+
+<div th:object="element : ${advertisements}">
+    <tr>
+        <th>Ad name</th>
+        <th>Ad price</th>
+        <th>Ad status</th>
+        <th>Ad text</th>
+        <th>Ad text</th>
+    </tr>
+    <tr th:each="doc : ${docs}">
+        <td th:text="${doc.passportnumber}"></td>
+        <td th:text="${doc.passportseries}"></td>
+        <td th:text="${doc.birthdate}"></td>
+        <td th:text="${doc.address}"></td>
+        <td><a th:href="'/document-update/'+${doc.id}">Edit</a></td>
+        <td><a th:href="'/document-delete/'+${doc.id}">Del</a></td>
+    </tr>
+
+</div>
+
+<form th:action="${'/advertisement-create'}" method="post">
+    <select  name="advertisement">
+        <div th:each="element : ${advertisements}">
+<!--            <option th:text="${element.advertisementname}"></option>-->
+            <option th:name="advertisementid" th:text="${element.advertisementname}" th:value="${element.advertisementid}"></option>
+        </div>
+    </select>
+    <select  name="photo">
+        <div th:each="element : ${photos}">
+            <option th:text="${element.photoname}"  th:value="element.photoid">
+            </option>
+        </div>
+    </select>
+    <br>
+    <button type="submit">Добавить человека</button>
 </form>
 </body>
 </html>

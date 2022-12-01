@@ -5,6 +5,8 @@ import com.ruscript.tutorialproject.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhotoService {
     @Autowired
@@ -14,5 +16,9 @@ public class PhotoService {
         this.photoRepository = photoRepository;
     }
 
-    public void save(Photo photo) { this.photoRepository.save(photo); }
+    public void save(Photo photo) { photoRepository.save(photo); }
+
+    public List<Photo> findAll() { return photoRepository.findAll(); }
+
+    public Photo findByPhotoid(int s) { return photoRepository.findByPhotoid(s); }
 }

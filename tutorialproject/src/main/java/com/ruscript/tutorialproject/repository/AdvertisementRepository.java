@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface AdvertisementRepository extends JpaRepository<Advertisement, Integer> {
     public List<Advertisement> findByAdvertisementnameContainsIgnoreCase(String s);
+
+    public Advertisement findByAdvertisementid (int s);
 }

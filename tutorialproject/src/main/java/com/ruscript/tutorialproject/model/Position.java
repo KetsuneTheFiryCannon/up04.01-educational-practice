@@ -1,46 +1,46 @@
 package com.ruscript.tutorialproject.model;
 
 public class Position {
-    public int PositionId;
+    public int positionid;
 
-    public String PositionName;
+    public String positionname;
 
-    public double PositionPrice;
+    public double positionprice;
 
-    public int SupplierFk;
+    public int supplierfk;
 
     public Position() {
     }
 
-    public int getPositionId() {
-        return PositionId;
+    public int getPositionid() {
+        return positionid;
     }
 
-    public void setPositionId(int positionId) {
-        PositionId = positionId;
+    public void setPositionid(int positionid) {
+        this.positionid = positionid;
     }
 
-    public String getPositionName() {
-        return PositionName;
+    public String getPositionname() {
+        return positionname;
     }
 
-    public void setPositionName(String positionName) {
-        PositionName = positionName;
+    public void setPositionname(String positionname) {
+        this.positionname = positionname;
     }
 
-    public double getPositionPrice() {
-        return PositionPrice;
+    public double getPositionprice() {
+        return positionprice;
     }
 
-    public void setPositionPrice(double positionPrice) {
-        PositionPrice = positionPrice;
+    public void setPositionprice(double positionprice) {
+        this.positionprice = positionprice;
     }
 
-    public int getSupplierFk() {
-        return SupplierFk;
+    public int getSupplierfk() {
+        return supplierfk;
     }
 
-    public void setSupplierFk(int supplierFk) {
-        SupplierFk = supplierFk;
+    public void setSupplierfk(int supplierfk) {
+        this.supplierfk = supplierfk;
     }
 }
