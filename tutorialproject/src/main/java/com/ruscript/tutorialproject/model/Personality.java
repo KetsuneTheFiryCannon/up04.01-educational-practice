@@ -2,6 +2,7 @@ package com.ruscript.tutorialproject.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -32,6 +33,12 @@ public class Personality {
 
     @OneToOne(optional = true, mappedBy = "personaldatafk")
     private User user;
+
+    @OneToOne(optional = true, mappedBy = "personaldatafk")
+    private Bank bank;
+
+    @OneToOne(optional = true, mappedBy = "personaldatafk")
+    private Supplier supplier;
 
     public Personality() {
     }
@@ -98,5 +105,13 @@ public class Personality {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 }

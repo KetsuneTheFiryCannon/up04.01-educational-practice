@@ -1,68 +1,90 @@
 package com.ruscript.tutorialproject.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "rent_contract_table")
 public class Rent {
-    public int RentContractId;
 
-    public Date RentContractStart;
+    @Id
+    @Column(name = "rent_contract_id")
+    public int rentcontractid;
 
-    public Date RentContractEnd;
+    @Column(name = "rent_contract_start")
+    public Date rentcontractstart;
 
-    public double Total;
+    @Column(name = "rent_contract_end")
+    public Date rentcontractend;
 
-    public boolean Status;
+    @Column(name = "total")
+    public double total;
 
-    public int PlacementFk;
+    @Column(name = "status")
+    public boolean status;
+
+    @OneToOne(optional = true, mappedBy = "rentfk")
+    public Placement placementfk;
+
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    public User rents;
 
     public Rent() {
     }
 
-    public int getRentContractId() {
-        return RentContractId;
+    public int getRentcontractid() {
+        return rentcontractid;
     }
 
-    public void setRentContractId(int rentContractId) {
-        RentContractId = rentContractId;
+    public void setRentcontractid(int rentcontractid) {
+        this.rentcontractid = rentcontractid;
     }
 
-    public Date getRentContractStart() {
-        return RentContractStart;
+    public Date getRentcontractstart() {
+        return rentcontractstart;
     }
 
-    public void setRentContractStart(Date rentContractStart) {
-        RentContractStart = rentContractStart;
+    public void setRentcontractstart(Date rentcontractstart) {
+        this.rentcontractstart = rentcontractstart;
     }
 
-    public Date getRentContractEnd() {
-        return RentContractEnd;
+    public Date getRentcontractend() {
+        return rentcontractend;
     }
 
-    public void setRentContractEnd(Date rentContractEnd) {
-        RentContractEnd = rentContractEnd;
+    public void setRentcontractend(Date rentcontractend) {
+        this.rentcontractend = rentcontractend;
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(double total) {
-        Total = total;
+        this.total = total;
     }
 
     public boolean isStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(boolean status) {
-        Status = status;
+        this.status = status;
     }
 
-    public int getPlacementFk() {
-        return PlacementFk;
+    public Placement getPlacementfk() {
+        return placementfk;
     }
 
-    public void setPlacementFk(int placementFk) {
-        PlacementFk = placementFk;
+    public void setPlacementfk(Placement placementfk) {
+        this.placementfk = placementfk;
+    }
+
+    public User getRents() {
+        return rents;
+    }
+
+    public void setRents(User rents) {
+        this.rents = rents;
     }
 }

@@ -14,8 +14,9 @@ public class Bank {
     @Column(name = "bank_name")
     public String nankname;
 
-    @Column(name = "personal_data_fk")
-    public int personaldatafk;
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "personal_data_fk")
+    public Personality personaldatafk;
 
     public Bank() {
     }
@@ -36,11 +37,11 @@ public class Bank {
         this.nankname = nankname;
     }
 
-    public int getPersonaldatafk() {
+    public Personality getPersonaldatafk() {
         return personaldatafk;
     }
 
-    public void setPersonaldatafk(int personaldatafk) {
+    public void setPersonaldatafk(Personality personaldatafk) {
         this.personaldatafk = personaldatafk;
     }
 }

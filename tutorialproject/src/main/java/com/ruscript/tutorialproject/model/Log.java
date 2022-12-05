@@ -1,12 +1,21 @@
 package com.ruscript.tutorialproject.model;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "log_table")
 public class Log {
+
+    @Id
+    @Column(name = "log_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int logid;
 
+    @Column(name = "log_activity")
     public String logactivity;
 
+    //@Column(name = "")
     public UUID userfk;
 
     public Log() {

@@ -1,16 +1,25 @@
 package com.ruscript.tutorialproject.model;
 
+import javax.persistence.*;
 import java.sql.Date;
-import java.util.UUID;
 
+@Entity
+@Table(name = "holiday_table")
 public class Holiday {
+
+    @Id
+    @Column(name = "holiday_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int holidayid;
 
+    @Column(name = "holiday_start")
     public Date holidaystart;
 
+    @Column(name = "holiday_end")
     public Date holidayend;
 
-    public UUID userfk;
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    public User holidays;
 
     public Holiday() {
     }
@@ -39,11 +48,11 @@ public class Holiday {
         this.holidayend = holidayend;
     }
 
-    public UUID getUserfk() {
-        return userfk;
+    public User getUser() {
+        return holidays;
     }
 
-    public void setUserfk(UUID userfk) {
-        this.userfk = userfk;
+    public void setUser(User user) {
+        this.holidays = user;
     }
 }

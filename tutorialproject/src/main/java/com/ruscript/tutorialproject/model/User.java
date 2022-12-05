@@ -3,7 +3,9 @@ package com.ruscript.tutorialproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.print.Doc;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -29,13 +31,21 @@ public class User {
     @JoinColumn(name = "document_fk")
     public Document documentfk;
 
+    @OneToMany(mappedBy = "holidays", fetch = FetchType.EAGER)
+    public Set<Holiday> holiday = new HashSet<>();
+
+    @OneToMany(mappedBy = "rents", fetch = FetchType.EAGER)
+    public Set<Rent> rent = new HashSet<>();
+
     @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "personal_data_fk")
     public Personality personaldatafk;
 
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_fk")
-    public Role rolefk;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    public Set<Role> role;
+
 
     public boolean isStatus() {
         return status;
@@ -69,12 +79,16 @@ public class User {
         this.userpassword = userpassword;
     }
 
-    public User(String userlogin, String userpassword, Document documentfk, Personality personaldatafk, Role rolefk) {
+    public User(UUID userId, String userlogin, String userpassword, boolean status, Document documentfk, Set<Holiday> holiday, Set<Rent> rent, Personality personaldatafk, Set<Role> role) {
+        this.userId = userId;
         this.userlogin = userlogin;
         this.userpassword = userpassword;
+        this.status = status;
         this.documentfk = documentfk;
+        this.holiday = holiday;
+        this.rent = rent;
         this.personaldatafk = personaldatafk;
-        this.rolefk = rolefk;
+        this.role = role;
     }
 
     public User() {
@@ -88,6 +102,22 @@ public class User {
         this.documentfk = documentfk;
     }
 
+    public Set<Holiday> getHoliday() {
+        return holiday;
+    }
+
+    public void setHoliday(Set<Holiday> holiday) {
+        this.holiday = holiday;
+    }
+
+    public Set<Rent> getRent() {
+        return rent;
+    }
+
+    public void setRent(Set<Rent> rent) {
+        this.rent = rent;
+    }
+
     public Personality getPersonaldatafk() {
         return personaldatafk;
     }
@@ -96,11 +126,11 @@ public class User {
         this.personaldatafk = personaldatafk;
     }
 
-    public Role getRolefk() {
-        return rolefk;
+    public Set<Role> getRole() {
+        return role;
     }
 
-    public void setRolefk(Role rolefk) {
-        this.rolefk = rolefk;
+    public void setRole(Set<Role> role) {
+        this.role = role;
     }
 }

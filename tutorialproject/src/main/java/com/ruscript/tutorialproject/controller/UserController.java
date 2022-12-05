@@ -1,11 +1,9 @@
 package com.ruscript.tutorialproject.controller;
 
-import com.ruscript.tutorialproject.model.Document;
-import com.ruscript.tutorialproject.model.Personality;
+import com.ruscript.tutorialproject.model.Role;
 import com.ruscript.tutorialproject.model.User;
 import com.ruscript.tutorialproject.service.DocumentService;
 import com.ruscript.tutorialproject.service.PersonalityService;
-import com.ruscript.tutorialproject.service.RoleService;
 import com.ruscript.tutorialproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -24,17 +22,14 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private final RoleService roleService;
-
     private final UserService userService;
 
     private final DocumentService documentService;
 
     private final PersonalityService personalityService;
 
-    public UserController(UserService userService, RoleService roleService, DocumentService documentService, PersonalityService personalityService) {
+    public UserController(UserService userService, DocumentService documentService, PersonalityService personalityService) {
         this.userService = userService;
-        this.roleService = roleService;
         this.documentService = documentService;
         this.personalityService = personalityService;
     }
@@ -54,6 +49,8 @@ public class UserController {
         }
 
         user.setStatus(true);
+
+        user.setRole(Collections.singleton(Role.RENTER));
 
         user.setUserpassword(new BCryptPasswordEncoder().encode(user.getUserpassword()));
 

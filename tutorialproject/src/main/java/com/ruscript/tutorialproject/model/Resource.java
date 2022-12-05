@@ -1,6 +1,12 @@
 package com.ruscript.tutorialproject.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Resource {
+
+    @Id
     public int ResourceId;
 
     public String ResourceName;

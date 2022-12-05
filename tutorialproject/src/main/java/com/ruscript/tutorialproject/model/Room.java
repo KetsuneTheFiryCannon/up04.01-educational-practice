@@ -1,26 +1,53 @@
 package com.ruscript.tutorialproject.model;
 
-public class Room {
-    public int RoomId;
+import javax.persistence.*;
+import java.util.Collection;
 
-    public String RoomName;
+@Entity
+@Table(name = "room_table")
+public class Room {
+
+    @Id
+    @Column(name = "room_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int roomid;
+
+    @Column(name = "room_name")
+    public String roomname;
+
+    @OneToMany(mappedBy = "roomfk", fetch = FetchType.EAGER)
+    public Collection<Placement> placements;
+
+    public Room(int roomid, String roomname, Collection<Placement> placements) {
+        this.roomid = roomid;
+        this.roomname = roomname;
+        this.placements = placements;
+    }
 
     public Room() {
     }
 
-    public int getRoomId() {
-        return RoomId;
+    public int getRoomid() {
+        return roomid;
     }
 
-    public void setRoomId(int roomId) {
-        RoomId = roomId;
+    public void setRoomid(int roomid) {
+        this.roomid = roomid;
     }
 
-    public String getRoomName() {
-        return RoomName;
+    public String getRoomname() {
+        return roomname;
     }
 
-    public void setRoomName(String roomName) {
-        RoomName = roomName;
+    public void setRoomname(String roomname) {
+        this.roomname = roomname;
+    }
+
+    public Collection<Placement> getPlacements() {
+        return placements;
+    }
+
+    public void setPlacements(Collection<Placement> placements) {
+        this.placements = placements;
     }
 }

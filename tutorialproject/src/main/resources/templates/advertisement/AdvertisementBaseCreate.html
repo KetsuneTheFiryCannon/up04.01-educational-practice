@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="mb-3">
+    <form action="#" th:action="@{/advertisement-base-create}" th:object="${ads}" method="post">
+        <input type="text" th:field="*{advertisementname}" id="advertisementname" placeholder="advertisement name name"/>
+        <input type="number" th:field="*{advertisementprice}" id="advertisementprice" placeholder="advertisement price"/>
+        <input type="checkbox" th:field="*{advertisementstatus}" id="advertisementstatus" placeholder="advertisement status"/>
+        <input type="text" th:field="*{advertisementtext}" id="advertisementtext" placeholder="advertisementtext"/>
+        <button type="submit">Create advertisement photo</button>
+    </form>
+</div>
+</body>
+</html>
