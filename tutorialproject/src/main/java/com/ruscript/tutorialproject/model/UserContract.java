@@ -1,12 +1,21 @@
 package com.ruscript.tutorialproject.model;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "user_contract_table")
 public class UserContract {
+
+    @Id
+    @Column(name = "user_contract_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int UserContractId;
 
+    @Column(name = "user_fk")
     public UUID UserFk;
 
+    @Column(name = "contract_fk")
     public int ContractFk;
 
     public UserContract() {

@@ -9,6 +9,7 @@ public class Rent {
 
     @Id
     @Column(name = "rent_contract_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int rentcontractid;
 
     @Column(name = "rent_contract_start")
@@ -23,13 +24,23 @@ public class Rent {
     @Column(name = "status")
     public boolean status;
 
-    @OneToOne(optional = true, mappedBy = "rentfk")
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
     public Placement placementfk;
 
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     public User rents;
 
     public Rent() {
+    }
+
+    public Rent(int rentcontractid, Date rentcontractstart, Date rentcontractend, double total, boolean status, Placement placementfk, User rents) {
+        this.rentcontractid = rentcontractid;
+        this.rentcontractstart = rentcontractstart;
+        this.rentcontractend = rentcontractend;
+        this.total = total;
+        this.status = status;
+        this.placementfk = placementfk;
+        this.rents = rents;
     }
 
     public int getRentcontractid() {

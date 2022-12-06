@@ -17,9 +17,17 @@ public class Position {
     @Column(name = "position_price")
     public double positionprice;
 
-    public int supplierfk;
+    @ManyToOne(optional = true)
+    public Supplier supplierfk;
 
     public Position() {
+    }
+
+    public Position(int positionid, String positionname, double positionprice, Supplier supplierfk) {
+        this.positionid = positionid;
+        this.positionname = positionname;
+        this.positionprice = positionprice;
+        this.supplierfk = supplierfk;
     }
 
     public int getPositionid() {
@@ -46,11 +54,11 @@ public class Position {
         this.positionprice = positionprice;
     }
 
-    public int getSupplierfk() {
+    public Supplier getSupplierfk() {
         return supplierfk;
     }
 
-    public void setSupplierfk(int supplierfk) {
+    public void setSupplierfk(Supplier supplierfk) {
         this.supplierfk = supplierfk;
     }
 }

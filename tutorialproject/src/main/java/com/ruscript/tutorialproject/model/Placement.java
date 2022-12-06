@@ -21,11 +21,10 @@ public class Placement {
     @Column(name = "placement_status")
     public boolean placementstatus;
 
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true)
     public Room roomfk;
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rentfk")
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
     public Rent rentfk;
 
     public Placement() {

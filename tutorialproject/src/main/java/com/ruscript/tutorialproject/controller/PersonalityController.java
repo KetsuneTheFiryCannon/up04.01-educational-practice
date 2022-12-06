@@ -5,6 +5,7 @@ import com.ruscript.tutorialproject.model.Personality;
 import com.ruscript.tutorialproject.model.Role;
 import com.ruscript.tutorialproject.service.PersonalityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('HR', 'ADMIN')")
 public class PersonalityController {
 
     private final PersonalityService personalityService;

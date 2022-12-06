@@ -1,6 +1,7 @@
 package com.ruscript.tutorialproject.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "supplier_table")
@@ -17,6 +18,9 @@ public class Supplier {
     @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "personal_data_fk")
     public Personality personaldatafk;
+
+    @OneToMany(mappedBy = "supplierfk", fetch = FetchType.EAGER)
+    public List<Position> position;
 
     public Supplier(int supplierid, String suppliername, Personality personaldatafk) {
         this.supplierid = supplierid;
@@ -49,5 +53,13 @@ public class Supplier {
 
     public void setPersonaldatafk(Personality personaldatafk) {
         this.personaldatafk = personaldatafk;
+    }
+
+    public List<Position> getPosition() {
+        return position;
+    }
+
+    public void setPosition(List<Position> position) {
+        this.position = position;
     }
 }

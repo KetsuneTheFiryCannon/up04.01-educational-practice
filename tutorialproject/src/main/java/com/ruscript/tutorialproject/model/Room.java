@@ -15,7 +15,7 @@ public class Room {
     @Column(name = "room_name")
     public String roomname;
 
-    @OneToMany(mappedBy = "roomfk", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "roomfk", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<Placement> placements;
 
     public Room(int roomid, String roomname, Collection<Placement> placements) {

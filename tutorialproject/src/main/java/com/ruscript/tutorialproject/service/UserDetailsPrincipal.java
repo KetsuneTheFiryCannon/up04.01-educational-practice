@@ -21,9 +21,8 @@ public class UserDetailsPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> roles = new ArrayList<>();
-        //roles.add(new SimpleGrantedAuthority(user.))
-        return null;
+        List<GrantedAuthority> roles = new ArrayList<>(user.role);
+        return roles;
     }
 
     @Override

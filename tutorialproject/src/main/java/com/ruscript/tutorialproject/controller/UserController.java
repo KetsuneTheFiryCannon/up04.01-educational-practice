@@ -6,6 +6,7 @@ import com.ruscript.tutorialproject.service.DocumentService;
 import com.ruscript.tutorialproject.service.PersonalityService;
 import com.ruscript.tutorialproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('ADMIN', 'HR')")
 public class UserController {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     private final UserService userService;
 
@@ -28,10 +29,11 @@ public class UserController {
 
     private final PersonalityService personalityService;
 
-    public UserController(UserService userService, DocumentService documentService, PersonalityService personalityService) {
+    public UserController(UserService userService, DocumentService documentService, PersonalityService personalityService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.documentService = documentService;
         this.personalityService = personalityService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/registration")

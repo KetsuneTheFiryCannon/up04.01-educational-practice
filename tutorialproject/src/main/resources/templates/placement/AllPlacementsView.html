@@ -13,36 +13,24 @@
 
 <header th:insert="/fragments/Headers :: headerMain"></header>
 
-<div th:switch="${places}">
-    <table>
-        <tr>
-            <th>
-                <h5 class="text-font-fantasy">Placements</h5>
-            </th>
-        </tr>
-    </table>
-    <h2 th:case="null">No placements found!</h2>
-    <div th:case="*">
-        <table class="table table-striped table-sm table-bordered text-center">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Cost</th>
-                <th>Status</th>
+<center>
+
+<div th:each="place : ${places}" align="center" class="card" style="width: 18rem;">
+        <div class="card-body">
+            <p th:each="room : ${place.roomfk}">
+                <img th:src="${room.roomname}" class="d-block w-100" alt="...">
+            </p>
+            <h5 class="card-text" th:text="${place.placementname}"></h5>
+            <p class="card-text" th:text="${place.placementcost}"></p>
+            <input type="checkbox" disabled th:checked="${place.placementstatus}">
+
+            <p><a class="btn btn-primary" th:href="'/placement-update/'+${place.placementid}">Edit</a></p>
+            <p><a class="btn btn-primary" th:href="'/placement-delete/'+${place.placementid}">Delete</a></p>
+            <p><a class="btn btn-primary" th:href="'/rent-create'" >Sign a contract</a></p>
             </tr>
-            </thead>
-            <tbody>
-            <tr th:each="place : ${places}">
-                <td th:text="${place.placementname}"></td>
-                <td th:text="${place.placementcost}"></td>
-                <td th:text="${place.placementstatus}"></td>
-                <td><a th:href="'/placement-update/'+${place.placementid}">Edit</a></td>
-                <td><a th:href="'/placement-delete/'+${place.placementid}">Del</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        </div>
 </div>
+</center>
 
 <div th:switch="${rooms}">
     <h5 th:case="null">No rooms found!</h5>
@@ -63,10 +51,9 @@
             <tbody>
             <tr th:each="room : ${rooms}">
                 <td>
-                    <img th:src="${room.roomname}">
+                    <img th:src="|/img/${room.roomname}|">
                 </td>
-                <td><a th:href="'/placement-update/'+${room.roomid}">Edit</a></td>
-                <td><a th:href="'/placement-delete/'+${room.roomid}">Del</a></td>
+                <td><a th:href="'/room-delete/'+${room.roomid}">Del</a></td>
             </tr>
             </tbody>
         </table>
@@ -110,7 +97,6 @@
         </div>
     </form>
 </center>
-</div>
 
 <footer th:insert="/fragments/Footers :: footerMain"></footer>
 
