@@ -18,7 +18,7 @@
 <div th:each="place : ${places}" align="center" class="card" style="width: 18rem;">
         <div class="card-body">
             <p th:each="room : ${place.roomfk}">
-                <img th:src="${room.roomname}" class="d-block w-100" alt="...">
+                <img th:src="|/img/${room.roomname}|" width="100px" height="100px" class="d-block" alt="...">
             </p>
             <h5 class="card-text" th:text="${place.placementname}"></h5>
             <p class="card-text" th:text="${place.placementcost}"></p>
@@ -51,9 +51,11 @@
             <tbody>
             <tr th:each="room : ${rooms}">
                 <td>
-                    <img th:src="|/img/${room.roomname}|">
+                    <img th:src="|/img/${room.roomname}|" width="50px" height="50px">
                 </td>
-                <td><a th:href="'/room-delete/'+${room.roomid}">Del</a></td>
+                <td>
+                    <a th:href="'/room-delete/'+${room.roomid}" class="btn btn-primary">Del</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -72,7 +74,7 @@
                 <option th:name="roomid" th:text="${room.roomid}"  th:value="${room.roomid}"></option>
             </div>
         </select>
-        <button type="submit" class="btn btn-primary btn-success">Create advertisement photo</button>
+        <button type="submit" class="btn btn-primary btn-success">Add new advertisement</button>
     </form>
 </div>
 
@@ -81,7 +83,7 @@
         <div class="card" align="left" style="width: 18rem;">
             <div class="card-header">
                 <h6>
-                    Create new document
+                    Add new room
                 </h6>
             </div>
             <h8>

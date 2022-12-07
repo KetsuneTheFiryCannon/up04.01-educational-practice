@@ -2,6 +2,7 @@ package com.ruscript.tutorialproject.controller;
 
 import com.ruscript.tutorialproject.model.Advertisement;
 import com.ruscript.tutorialproject.model.Photo;
+import com.ruscript.tutorialproject.model.Placement;
 import com.ruscript.tutorialproject.service.AdvertisementService;
 import com.ruscript.tutorialproject.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,24 +52,33 @@ public class AdvertisementController {
             Photo photo,
             @RequestParam("file") MultipartFile file
     ) {
-        if (file != null) {
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
+
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
         }
 
         String uuid = UUID.randomUUID().toString();
         String resultFileName = uuid + "." + file.getOriginalFilename();
+
         try {
             file.transferTo(new File(uploadPath + "/" + resultFileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        photo.setPhotopath(uploadPath + "/" + resultFileName);
+
+        photo.setPhotopath(resultFileName);
 
         photoService.save(photo);
 
+        return "redirect:/advertisements-all";
+    }
+
+    @GetMapping("/advertisement-delete/{id}")
+    public String deleteAdvertisement(
+            @PathVariable int id) {
+        Advertisement advertisement = advertisementService.findByNameAdvertisementid(id);
+        advertisementService.delete(advertisement);
         return "redirect:/advertisements-all";
     }
 
@@ -104,7 +116,7 @@ public class AdvertisementController {
         List<Photo> photos = photoService.findAll();
 
         model.addAttribute("ads", advertisements);
-        model.addAttribute("photos", photos);
+        model.addAttribute("photos1", photos);
 
         return "advertisement/AdvertisementCreate";
     }
@@ -112,13 +124,20 @@ public class AdvertisementController {
     @PostMapping("/advertisement-create")
     public String advertisementCreatePost(
             @RequestParam int advertisement,
-            @RequestParam int photo
+            @RequestParam Integer[] photos,
+            Photo photo
     ) {
 
         Advertisement advertisement1 = advertisementService.findByNameAdvertisementid(advertisement);
-        Photo photo1 = photoService.findByPhotoid(photo);
 
-        advertisement1.getPhotos().add(photo1);
+        List<Photo> temp = new ArrayList<>();
+
+        for (int i: photos) {
+            temp.add(photoService.findByPhotoid(i));
+        }
+
+        advertisement1.setPhotos(temp);
+
 
         advertisementService.save(advertisement1);
 

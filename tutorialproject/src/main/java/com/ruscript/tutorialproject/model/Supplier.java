@@ -31,6 +31,13 @@ public class Supplier {
     public Supplier() {
     }
 
+    public Supplier(int supplierid, String suppliername, Personality personaldatafk, List<Position> position) {
+        this.supplierid = supplierid;
+        this.suppliername = suppliername;
+        this.personaldatafk = personaldatafk;
+        this.position = position;
+    }
+
     public int getSupplierid() {
         return supplierid;
     }

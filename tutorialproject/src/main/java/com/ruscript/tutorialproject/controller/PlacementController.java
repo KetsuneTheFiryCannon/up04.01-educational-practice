@@ -112,6 +112,7 @@ public class PlacementController {
             @RequestParam("file") MultipartFile file,
             Model model,
             BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return "placement/AllPlacementsView";
         }

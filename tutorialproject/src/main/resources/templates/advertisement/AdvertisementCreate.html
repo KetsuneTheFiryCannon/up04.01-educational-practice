@@ -15,25 +15,26 @@
 <resources mapping="/images/**" location="/images/" />
 
 <form th:action="@{/advertisement-create}" method="post">
-    <select  name="ads">
+    <select  name="advertisement">
         <div th:each="element : ${ads}">
             <option th:name="advertisementid" th:text="${element.advertisementname}" th:value="${element.advertisementid}"></option>
         </div>
     </select>
-    <select  name="photo">
+    <select th:name="${'photos'}" multiple >
         <div th:each="element : ${photos}">
-            <option th:name="photoid" th:text="${element.photopath}"  th:value="${element.photoid}">|</option>
+            <option th:name="photos" th:text="${element.photopath}"  th:value="${element.photoid}">|</option>
         </div>
     </select>
     <br>
     <button type="submit">Добавить человека</button>
 </form>
 
+<center>
 <div th:each="element : ${ads}" class="card" style="width: 18rem;">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div th:each="el : ${element.photos}" class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-                <img th:src="${el.photopath}" class="d-block w-100" alt="...">
+        <div class="carousel-inner flex-wrap">
+            <div th:each="el : ${element.photos}"  class="carousel-item active" data-bs-interval="10000">
+                <img th:src="|/img/${el.photopath}|" class="d-block" width="300px" height="200px" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -46,11 +47,14 @@
         </button>
     </div>
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title"><a  th:text="${element.advertisementname}"></a></h5>
+        <p class="card-text" th:text="${element.advertisementprice}"></p>
+        <p class="card-text" th:text="${element.advertisementstatus}"></p>
+        <p class="card-text" th:text="${element.advertisementtext}"></p>
+        <p><a class="btn btn-primary" th:href="'/advertisement-delete/'+${element.advertisementid}">Delete</a></p>
     </div>
 </div>
+</center>
 
 <div th:switch="${ads}">
     <div th:case="*">

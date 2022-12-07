@@ -14,6 +14,8 @@
 <resources mapping="/resources/**" location="/resources/" />
 <resources mapping="/images/**" location="/images/" />
 
+<header th:insert="/fragments/Headers :: headerMain"></header>
+
 <!--<form th:action="@{/advertisement-create}" method="post">-->
 <!--    <select  name="ads">-->
 <!--        <div th:each="element : ${ads}">-->
@@ -28,26 +30,44 @@
 <!--    <br>-->
 <!--    <button type="submit">Добавить человека</button>-->
 <!--</form>-->
-
-<div th:each="pos : ${poses}" class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title" th:text="${pos.positionname}"></h5>
-        <p class="card-text" th:text="${pos.positionprice}"></p>
-        <div th:each="sup : ${sups}">
-            <p class="card-text" th:text="${sup.positionname}"></p>
+<center>
+    <div th:each="pos : ${poses}" class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${pos.positionname}"></h5>
+            <p class="card-text" th:text="${pos.positionprice}"></p>
+            <div th:object="${pos.supplierfk}">
+                <p class="card-text" th:text="${pos.supplierfk.suppliername}"></p>
+            </div>
         </div>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a th:href="'/position-delete/'+${pos.positionid}" class="btn btn-primary">Delete</a>
     </div>
-</div>
+
+
+</center>
 
 <center>
     <form th:action="@{/supplier-create}" th:object="${supplier}" method="post">
-        <input type="text" th:field="*{positionname}" id="positionname" placeholder="position name"/>
-        <input type="number" th:field="*{positionprice}" id="positionprice" placeholder="positionprice"/>
+        <input type="text" th:field="*{suppliername}" id="suppliername" placeholder="supplier name"/>
         <button type="submit" class="btn btn-primary btn-success">Create supplier</button>
     </form>
 </center>
 
+<center>
+    <form th:action="@{/position-create}" th:object="${position}" method="post">
+        <input type="text" th:field="*{positionname}" id="positionname" placeholder="position name"/>
+        <input type="number" th:field="*{positionprice}" id="positionprice" placeholder="position price"/>
+
+        <select  name="id">
+            <div th:field="*{supplierfk}">
+                <option name="id"
+                        th:each="sup : ${sups}"
+                        th:text="${sup.suppliername}"
+                        th:value="${sup.supplierid}">|</option>
+            </div>
+                </select>
+        <button type="submit" class="btn btn-primary btn-success">Create supplier</button>
+    </form>
+</center>
 
 <footer th:insert="/fragments/Footers :: footerMain"></footer>
 

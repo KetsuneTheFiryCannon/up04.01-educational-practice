@@ -3,10 +3,7 @@ package com.ruscript.tutorialproject.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "user_table")
@@ -31,15 +28,21 @@ public class User {
     @JoinColumn(name = "document_fk")
     public Document documentfk;
 
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "personal_data_fk")
+    public Personality personaldatafk;
+
     @OneToMany(mappedBy = "holidays", fetch = FetchType.EAGER)
     public Set<Holiday> holiday = new HashSet<>();
 
     @OneToMany(mappedBy = "rents", fetch = FetchType.EAGER)
     public Set<Rent> rent = new HashSet<>();
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "personal_data_fk")
-    public Personality personaldatafk;
+    @ManyToMany
+    @JoinTable(name="user_contract_table",
+            joinColumns=@JoinColumn(name="user_fk"),
+            inverseJoinColumns=@JoinColumn(name="contract_fk"))
+    public List<Contract> contractfk;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

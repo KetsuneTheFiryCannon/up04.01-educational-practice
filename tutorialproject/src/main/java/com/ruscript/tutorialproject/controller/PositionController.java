@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -38,10 +39,11 @@ public class PositionController {
     }
 
     @GetMapping("/position-config")
-    public String findAll(Model model) {
+    public String findAll(Model model, Position position, Supplier supplier) {
         List<Supplier> sups = supplierService.findAll();
         List<Position> poses = positionService.findAll();
         List<Personality> pers = personalityService.findAll();
+        model.addAttribute("supplier", supplier);
         model.addAttribute("sups", sups);
         model.addAttribute("poses", poses);
         model.addAttribute("pers", pers);
@@ -75,18 +77,48 @@ public class PositionController {
 
         return "redirect:/position-config";
     }
-//
-//    @GetMapping("/document-delete/{id}")
-//    public String deleteById(@PathVariable int id){
-//        try {
-//            if (checkRole("ADMIN") || checkRole("OFFICER")) {
-//                documentService.deleteById(id);
-//                return "redirect:/documents-all";
-//            }
-//        }catch (Exception e){}
-//        return "Error";
-//    }
-//
+
+    @GetMapping("/position-create")
+    public String createPositionGet(Supplier supplier,
+                                    Position position,
+                                    Personality personality,
+                                    Model model) {
+        List<Supplier> sups = supplierService.findAll();
+        List<Position> poses = positionService.findAll();
+        List<Personality> pers = personalityService.findAll();
+        model.addAttribute("sups", sups);
+        model.addAttribute("poses", poses);
+        model.addAttribute("pers", pers);
+        return "supplier/CreatePosition";
+    }
+
+    @PostMapping("/position-create")
+    public String createPositionPost(
+            Supplier supplier,
+            Personality personality,
+            @Validated Position position,
+            BindingResult bindingResult,
+            @RequestParam int id,
+            Model model) {
+        if (bindingResult.hasErrors()) {
+            return "supplier/CreatePosition";
+        }
+
+        supplier = supplierService.findById(id);
+
+        position.setSupplierfk(supplier);
+
+        positionService.save(position);
+
+        return "redirect:/position-config";
+    }
+
+    @GetMapping("/position-delete/{id}")
+    public String deleteById(@PathVariable int id){
+                positionService.delete(id);
+                return "redirect:/position-config";
+    }
+
 //    @GetMapping("/document-update/{id}")
 //    public String up(
 //            @PathVariable int id,

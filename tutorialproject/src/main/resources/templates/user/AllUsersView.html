@@ -21,16 +21,43 @@
             <p th:if="${el.userId}" th:text="${el.userId}"></p>
             <p th:if="${el.userlogin}" th:text="${el.userlogin}" ></p>
 
-            <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().passportnumber}"></p>
-            <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().passportseries}"></p>
-            <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().birthdate}"></p>
-            <p th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().address}"></p>
+            <div align="center" class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getDocumentfk()}"  th:text="${el.getDocumentfk().passportnumber}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getDocumentfk()}" th:text="${el.getDocumentfk().passportseries}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="date" th:if="${el.getDocumentfk()}"  th:text="${el.getDocumentfk().birthdate}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getDocumentfk()}"  th:text="${el.getDocumentfk().address}"></a>
+                    </p>
+                </div>
+            </div>
 
-            <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().firstname}"></p>
-            <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().secondname}"></p>
-            <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().thirdname}"></p>
-            <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().mail}"></p>
-            <p th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().phonenumber}"></p>
+
+            <div align="center" class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getPersonaldatafk()}"  th:text="${el.getPersonaldatafk().firstname}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().secondname}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().thirdname}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="text" th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().mail}"></a>
+                    </p>
+                    <p class="card-text">
+                        <a type="phonenumber" th:if="${el.getPersonaldatafk()}" th:text="${el.getPersonaldatafk().phonenumber}"></a>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </center>

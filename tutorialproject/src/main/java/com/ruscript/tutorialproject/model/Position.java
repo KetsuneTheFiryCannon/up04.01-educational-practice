@@ -1,6 +1,7 @@
 package com.ruscript.tutorialproject.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "position_table")
@@ -19,6 +20,12 @@ public class Position {
 
     @ManyToOne(optional = true)
     public Supplier supplierfk;
+
+    @ManyToMany
+    @JoinTable(name="position_contract_table",
+            joinColumns=@JoinColumn(name="position_fk"),
+            inverseJoinColumns=@JoinColumn(name="contract_fk"))
+    public List<Contract> contractfk;
 
     public Position() {
     }

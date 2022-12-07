@@ -40,6 +40,7 @@
     <form action="#" th:action="@{/rent-create}" th:object="${rent}" method="post">
         <input type="date" th:field="*{rentcontractstart}" id="rentcontractstart"/>
         <input type="date" th:field="*{rentcontractend}" id="rentcontractend"/>
+        <input type="checkbox" th:field="*{status}" id="status"/>
         <select name="place">
             <div th:each="pl : ${places}">
                 <option th:name="placementid" th:text="${pl.placementname}"  th:value="${pl.placementid}"></option>
